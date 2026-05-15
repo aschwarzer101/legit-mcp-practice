@@ -37,7 +37,7 @@ export function scanRepo(input: z.infer<typeof ScanRepoInput>){
         description: "Hardcoded sensitive key detected in source code", 
         detectedAt: new Date().toISOString()
     }
-    addFinding(targTenant.id, mockFinding); 
+    addFinding(targTenant.id, mockFinding); // isolates, only adds to specific tenant 
 
     return { success: true, finding: mockFinding}; 
   }
