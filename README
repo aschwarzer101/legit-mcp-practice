@@ -1,0 +1,40 @@
+# Legit MCP Practice Server
+
+A multi-tenant MCP (Model Context Protocol) server built in TypeScript that simulates a security findings platform. AI agents can call tools to scan repositories for vulnerabilities and retrieve tenant-scoped findings.
+
+## What it does
+
+- Supports multiple tenants, each authenticated by API key
+- Exposes two tools to AI agents: `scan_repo` and `get_findings`
+- Enforces data isolation — tenants can only access their own findings
+
+## Project Structure
+src/
+├── server.ts    # MCP server, tool registration
+├── tools.ts     # Tool definitions and input schemas
+├── tenants.ts   # Tenant registry and data isolation
+└── tests.ts     # Manual test script
+
+## Setup
+
+```bash
+npm install
+```
+
+## Run the server
+
+```bash
+npm run build
+npm start
+```
+
+## Run tests
+
+```bash
+npm run test
+```
+
+## Tools
+
+**scan_repo** — scans a repository and stores a mock finding for the authenticated tenant
+**get_findings** — returns all findings scoped to the authenticated tenant
