@@ -1,8 +1,10 @@
 {
   "name": "legit-mcp-practice",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
+    "build": "tsc", 
+    "start": "node dist/server.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,4 +20,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   }
+  
 }

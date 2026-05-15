@@ -1,7 +1,7 @@
 // server.ts - the MCP server that registers tools and handles agent requests 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"; 
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"; 
-import { z } from "zod"; 
+// import { z } from "zod"; 
 import { scanRepo, getFindings, ScanRepoInput, GetFindingsInput } from "./tools"
 
 
@@ -18,7 +18,7 @@ server.tool(
     ScanRepoInput.shape, 
     async ({ apiKey, repoUrl }) => {
         // 1. call scanRepo with apiKey and repoUrl
-            const result = scanRepo({apiKey: apiKey, repoUrl: repoUrl}); 
+            const result = scanRepo({apiKey, repoUrl}); 
             return { content: [{type: "text", text: JSON.stringify(result)}]}
     }
 ); 
@@ -30,7 +30,7 @@ server.tool(
     GetFindingsInput.shape, 
     async ({ apiKey }) => {
         // 1. call getFindings with {apiKey}
-        const result = getFindings({apiKey: apiKey}); 
+        const result = getFindings({apiKey}); 
         return { content: [{type: "text", text: JSON.stringify(result)}] }
         // 2. return { content [{type: "text", text: JSON.stringify(result) }] }
     }
