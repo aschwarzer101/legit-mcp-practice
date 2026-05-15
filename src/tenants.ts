@@ -3,7 +3,7 @@ export interface Tenant {
     name: string; 
     apiKey: string; 
     findings: Finding[];
-}
+} 
 
 export interface Finding {
     id: string; 
@@ -11,7 +11,7 @@ export interface Finding {
     severity: "critical" | "high" | "medium" | "low"; 
     description: string; 
     detectedAt: string; 
-}
+} 
 
 const tenants: Map<string, Tenant> = new Map([ 
     ["acme-corp", {id: "acme-corp", name: "Acme Corp", 
@@ -30,7 +30,7 @@ const tenants: Map<string, Tenant> = new Map([
     // name: "Globex Industries"
     // apiKey: "globex-secret-456"
     // findings: []
-]); 
+]) 
 
 export function getTenantByApiKey(apiKey: string): Tenant | null {
     //iterate over tenants, return the one whos apiKey matches
@@ -42,14 +42,14 @@ export function getTenantByApiKey(apiKey: string): Tenant | null {
         }
     }
     return null; 
-}
+} 
 
 export function getTenantFindings(tenantId: string): Finding[] {
     //look up tenant by id, return their findings
     // return empty array if tenant doesn't exist
     const tenant = tenants.get(tenantId);
     return tenant ? tenant.findings : []; 
-}
+} 
 
 export function addFinding(tenantId: string, finding: Finding): void {
     //look up tenant by id, push the finding into their findings array
@@ -58,4 +58,4 @@ export function addFinding(tenantId: string, finding: Finding): void {
         targetTenant.findings.push(finding); 
     }
     
-}
+} 
